@@ -24,6 +24,9 @@ namespace lvl_0
         private Sprite m_redPaddleStroke;
 
         [SerializeField]
+        private Sprite m_redPaddleBackstroke;
+
+        [SerializeField]
         private Transform m_bluePaddlePosition;
 
         [SerializeField]
@@ -38,8 +41,16 @@ namespace lvl_0
         [SerializeField]
         private Sprite m_bluePaddleStroke;
 
+        [SerializeField]
+        private Sprite m_bluePaddleBackstroke;
+
         private InputActions m_inputActions;
         private Rigidbody2D m_rigidbody2D;
+        private bool m_isFrozen = false;
+
+        private Vector3 m_frozenVelocity = Vector3.zero;
+        private float m_frozenAngularVelocity = 0f;
+
 
         private void Awake()
         {
@@ -63,26 +74,30 @@ namespace lvl_0
 
         private void OnRedPaddleDownPerformed(CallbackContext context)
         {
+            if (m_isFrozen) return;
             Paddle(m_redPaddlePosition, m_redPaddleForce);
             m_redPaddleRenderer.sprite = m_redPaddleStroke;
         }
 
         private void OnRedPaddleUpPerformed(CallbackContext context)
         {
+            if (m_isFrozen) return;
             Paddle(m_redPaddlePosition, -m_redPaddleForce);
-            m_redPaddleRenderer.sprite = m_redPaddleStroke;
+            m_redPaddleRenderer.sprite = m_redPaddleBackstroke;
         }
 
         private void OnBluePaddleDownPerformed(CallbackContext context)
         {
+            if (m_isFrozen) return;
             Paddle(m_bluePaddlePosition, m_bluePaddleForce);
             m_bluePaddlerRenderer.sprite = m_bluePaddleStroke;
         }
 
         private void OnBluePaddleUpPerformed(CallbackContext context)
         {
+            if (m_isFrozen) return;
             Paddle(m_bluePaddlePosition, -m_bluePaddleForce);
-            m_bluePaddlerRenderer.sprite = m_bluePaddleStroke;
+            m_bluePaddlerRenderer.sprite = m_bluePaddleBackstroke;
         }
 
         private void OnRedPaddleCanceled(CallbackContext context)
@@ -108,6 +123,43 @@ namespace lvl_0
             m_inputActions.Game.BluePaddeDown.performed -= OnBluePaddleDownPerformed;
             m_inputActions.Game.BluePaddeUp.performed -= OnBluePaddleUpPerformed;
             m_inputActions.Game.Disable();
+        }
+
+        public void KillCanoe()
+        {
+            Destroy(gameObject);
+        }
+
+        public void Freeze()
+        {
+            OnBluePaddleCanceled(new CallbackContext());
+            OnRedPaddleCanceled(new CallbackContext());
+            m_rigidbody2D.freezeRotation = true;
+            m_frozenVelocity = m_rigidbody2D.velocity;
+            m_rigidbody2D.velocity = Vector3.zero;
+            m_frozenAngularVelocity = m_rigidbody2D.angularVelocity;
+            m_rigidbody2D.angularVelocity = 0f;
+            m_rigidbody2D.simulated = false;
+            m_isFrozen = true;
+        }
+
+        public void UnFreeze()
+        {
+            m_rigidbody2D.freezeRotation = false;
+            m_rigidbody2D.velocity = m_frozenVelocity;
+            m_frozenVelocity = Vector3.zero;
+            m_rigidbody2D.angularVelocity = m_frozenAngularVelocity;
+            m_frozenAngularVelocity = 0f;
+            m_rigidbody2D.simulated = true;
+            m_isFrozen = false;
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider.CompareTag("Rock"))
+            {
+                LevelManager.Instance.CanoeKilled();
+            }
         }
     }
 }

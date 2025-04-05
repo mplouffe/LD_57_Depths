@@ -55,3 +55,5 @@ MonoBehaviour:
     LoaderSceneIndex: 3
   - Game: 4
     LoaderSceneIndex: 4
+  - Game: 5
+    LoaderSceneIndex: 5

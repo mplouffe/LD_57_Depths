@@ -83,6 +83,7 @@ namespace lvl_0
         Menu,
         Settings,
         GameStart,
+        LevelComplete,
         GameOver
     }
 }
