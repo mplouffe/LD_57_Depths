@@ -1,0 +1,28 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="Page-1" id="vj1_JwqHmYUpO_BEOTyR">
+    <mxGraphModel dx="1785" dy="987" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="M9MHeNSC7HXLCwR0G0TZ-1" value="LD 57: DEPTHS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=29;fontFamily=Nosifer;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DNosifer;" vertex="1" parent="1">
+          <mxGeometry x="-492" y="-244" width="306" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="M9MHeNSC7HXLCwR0G0TZ-3" value="- Platformer where you use cards for abilites&lt;div&gt;- You have a hand of your skills and you need to make hands before you play levels to determine what skills you have in the stage&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=VT323;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DVT323;" vertex="1" parent="1">
+          <mxGeometry x="-393" y="-180" width="281" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="M9MHeNSC7HXLCwR0G0TZ-4" value="- Some kind of card game&lt;div&gt;- pixel deck of cards seems like a fun art challenge&lt;/div&gt;&lt;div&gt;- maybe something like poker but reskinned?&lt;/div&gt;&lt;div&gt;- card game where direction you play the card has an influnce on the play&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=VT323;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DVT323;" vertex="1" parent="1">
+          <mxGeometry x="-66" y="-180" width="281" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="M9MHeNSC7HXLCwR0G0TZ-5" value="- vertical scroller downwards&lt;div&gt;- deep into ocean&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=VT323;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DVT323;" vertex="1" parent="1">
+          <mxGeometry x="-402" y="-14" width="281" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="M9MHeNSC7HXLCwR0G0TZ-6" value="- dungeons" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=VT323;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DVT323;" vertex="1" parent="1">
+          <mxGeometry x="-78" y="-18" width="281" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="M9MHeNSC7HXLCwR0G0TZ-7" value="- mystical vortex beneath the forks" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=VT323;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DVT323;" vertex="1" parent="1">
+          <mxGeometry x="-345" y="82" width="281" height="114" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
