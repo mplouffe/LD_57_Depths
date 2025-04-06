@@ -9,6 +9,9 @@ namespace lvl_0
     public class CanoeController : MonoBehaviour
     {
         [SerializeField]
+        private SpriteRenderer m_canoeRenderer;
+
+        [SerializeField]
         private Transform m_redPaddlePosition;
 
         [SerializeField]
@@ -55,6 +58,7 @@ namespace lvl_0
 
         private InputActions m_inputActions;
         private Rigidbody2D m_rigidbody2D;
+        private CapsuleCollider2D m_collider;
         private bool m_isFrozen = false;
 
         private Vector3 m_frozenVelocity = Vector3.zero;
@@ -63,10 +67,20 @@ namespace lvl_0
         private Vector3 m_currentFlow = Vector3.zero;
         private List<Vector3> m_flowQueue = new(){ Vector3.zero };
 
+        private int m_deathAnimationFrame;
+        private bool m_isDying;
+        [SerializeField]
+        private List<Sprite> m_deathAnimation;
+        [SerializeField]
+        private Duration m_deathAnimationDuration;
+
+        private Transform m_parent;
+
         private void Awake()
         {
             m_inputActions = new InputActions();
             m_rigidbody2D = GetComponent<Rigidbody2D>();
+            m_collider = GetComponent<CapsuleCollider2D>();
         }
 
         private void Update()
@@ -74,6 +88,24 @@ namespace lvl_0
             if (!m_isFrozen)
             {
                 m_rigidbody2D.AddForce(m_currentFlow * Time.deltaTime);
+            }
+
+            if (m_isDying)
+            {
+                if (m_deathAnimationDuration.UpdateCheck())
+                {
+                    m_deathAnimationFrame++;
+                    if (m_deathAnimationFrame < m_deathAnimation.Count)
+                    {
+                        m_canoeRenderer.sprite = m_deathAnimation[m_deathAnimationFrame];
+                        m_deathAnimationDuration.Reset();
+                    }
+                    else
+                    {
+                        m_isDying = false;
+                        Destroy(gameObject);
+                    }
+                }
             }
         }
 
@@ -150,7 +182,15 @@ namespace lvl_0
 
         public void KillCanoe()
         {
-            Destroy(gameObject);
+            m_inputActions.Game.Disable();
+            m_deathAnimationFrame = 0;
+            m_bluePaddlerRenderer.enabled = false;
+            m_redPaddleRenderer.enabled = false;
+            m_collider.enabled = false;
+            m_canoeRenderer.sprite = m_deathAnimation[0];
+            m_deathAnimationDuration.Reset();
+
+            m_isDying = true;
         }
 
         public void Freeze()
@@ -194,6 +234,11 @@ namespace lvl_0
                 m_flowQueue.Add(newFlow);
                 m_currentFlow = newFlow;
             }
+            else if (collision.CompareTag("Whirlpool"))
+            {
+                m_parent = transform.parent;
+                transform.parent = collision.gameObject.transform.parent;
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
@@ -216,6 +261,10 @@ namespace lvl_0
                     m_flowQueue.RemoveAt(exitingFlowIndex);
                 }
                 m_currentFlow = m_flowQueue[m_flowQueue.Count - 1];
+            }
+            else if (collision.CompareTag("Whirlpool"))
+            {
+                transform.parent = m_parent;
             }
         }
     }

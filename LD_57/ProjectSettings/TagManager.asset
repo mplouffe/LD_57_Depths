@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Rock
   - Water
+  - Whirlpool
   layers:
   - Default
   - TransparentFX

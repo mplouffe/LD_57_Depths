@@ -108,6 +108,11 @@ namespace lvl_0
             }
             SetState(LevelManagerState.WaitingAfterDeath);
         }
+
+        public Transform GetPlayerTransform()
+        {
+            return m_currentPlayer.transform;
+        }
     }
 
     public enum LevelManagerState

@@ -57,7 +57,7 @@ namespace lvl_0
                 if (m_inputCooldownDuration.Elapsed())
                 {
                     var moveInput = m_inputActions.MainMenu.Move.ReadValue<Vector2>();
-                    if (moveInput.y < 0 && m_selectedMenuItem < MenuItem.Quit)
+                    if (moveInput.y < 0 && m_selectedMenuItem < MenuItem.Settings)
                     {
                         m_selectedMenuItem++;
                         m_pointerArrow.anchoredPosition = m_pointerPositions[(int)m_selectedMenuItem];
@@ -85,9 +85,9 @@ namespace lvl_0
                     case MenuItem.Settings:
                         LevelAttendant.Instance.LoadGameState(GameState.Settings);
                         break;
-                    case MenuItem.Quit:
-                        Application.Quit();
-                        break;
+                    //case MenuItem.Quit:
+                    //    Application.Quit();
+                    //    break;
                 }
                 m_itemSelected = true;
             }
@@ -107,7 +107,6 @@ namespace lvl_0
     {
         Start,
         Settings,
-        Quit
     }
 }
 

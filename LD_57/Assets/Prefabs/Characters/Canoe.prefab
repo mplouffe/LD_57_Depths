@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 7
   m_Sprite: {fileID: -1878162431, guid: 7ed37498006e708439c0f53494d5222b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 7
   m_Sprite: {fileID: 1265464414, guid: 7ed37498006e708439c0f53494d5222b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -286,8 +286,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 3
+  m_LinearDrag: 0.5
+  m_AngularDrag: 12
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4e9faf1962553429d3bee8a031b847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canoeRenderer: {fileID: 2676402753717324450}
   m_redPaddlePosition: {fileID: 803551302675586955}
   m_redPaddleForce: 10
   m_redPaddleRenderer: {fileID: 3213166494354503202}
@@ -327,6 +328,19 @@ MonoBehaviour:
   m_paddleUpSFX: {fileID: 8300000, guid: fd0455f0d7d752445bf1c390851947e5, type: 3}
   m_paddleDownSFX: {fileID: 8300000, guid: ea1cf37c7dabdaf4d97c279dd898a87a, type: 3}
   m_deathSound: {fileID: 8300000, guid: 00694e0fe0c59e04c83d0e94229f6659, type: 3}
+  m_deathAnimation:
+  - {fileID: 1764051861, guid: 301d4691c72e5bb42a9c036f0d325667, type: 3}
+  - {fileID: -49813713, guid: 301d4691c72e5bb42a9c036f0d325667, type: 3}
+  - {fileID: 861594919, guid: 301d4691c72e5bb42a9c036f0d325667, type: 3}
+  - {fileID: 393128163, guid: 301d4691c72e5bb42a9c036f0d325667, type: 3}
+  m_deathAnimationDuration:
+    m_easingCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_totalDuration: 0.15
 --- !u!1 &3954132269031765425
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +444,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 2088854193, guid: 64c5046850abf0f4090ad2309974cd23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
