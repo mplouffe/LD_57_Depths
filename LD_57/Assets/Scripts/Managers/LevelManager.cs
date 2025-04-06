@@ -22,6 +22,9 @@ namespace lvl_0
         [SerializeField]
         private Duration m_levelCompleteWaitTime;
 
+        [SerializeField]
+        private AudioClip m_levelMusic;
+
         private CanoeController m_currentPlayer;
         private LevelManagerState m_currentState;
 
@@ -30,6 +33,7 @@ namespace lvl_0
             switch (newState)
             {
                 case LevelManagerState.Respawning:
+                    AudioManager.Instance.PlayMusic(m_levelMusic);
                     m_currentPlayer = Instantiate(m_playerPrefab, m_levelStartingPoint);
                     CinemachineCameraAccessor.Instance.GetCamera().Follow = m_currentPlayer.transform;
                     break;
@@ -95,6 +99,7 @@ namespace lvl_0
 
         public void CanoeKilled()
         {
+            AudioManager.Instance.StopMusic();
             m_currentPlayer.KillCanoe();
             m_playerLives--;
             if (m_playerLives >= 0)

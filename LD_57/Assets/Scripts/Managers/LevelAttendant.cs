@@ -18,6 +18,8 @@ namespace lvl_0
 
         private GameState m_currentGame;
 
+        private FinishFlagLevel m_raisedFlagLevel;
+
         protected override void Awake()
         {
 
@@ -67,6 +69,16 @@ namespace lvl_0
             }
 
             Debug.LogError("OnSceneLoaded called from ArcadeAttendent when it wasn't expected.");
+        }
+
+        public void RaiseFinishFlag(FinishFlagLevel raisedLevel)
+        {
+            m_raisedFlagLevel = raisedLevel;
+        }
+
+        public FinishFlagLevel GetRaisedLevel()
+        {
+            return m_raisedFlagLevel;
         }
     }
 

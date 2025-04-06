@@ -44,6 +44,15 @@ namespace lvl_0
         [SerializeField]
         private Sprite m_bluePaddleBackstroke;
 
+        [SerializeField]
+        private AudioClip m_paddleUpSFX;
+
+        [SerializeField]
+        private AudioClip m_paddleDownSFX;
+
+        [SerializeField]
+        private AudioClip m_deathSound;
+
         private InputActions m_inputActions;
         private Rigidbody2D m_rigidbody2D;
         private bool m_isFrozen = false;
@@ -51,11 +60,21 @@ namespace lvl_0
         private Vector3 m_frozenVelocity = Vector3.zero;
         private float m_frozenAngularVelocity = 0f;
 
+        private Vector3 m_currentFlow = Vector3.zero;
+        private List<Vector3> m_flowQueue = new(){ Vector3.zero };
 
         private void Awake()
         {
             m_inputActions = new InputActions();
             m_rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+
+        private void Update()
+        {
+            if (!m_isFrozen)
+            {
+                m_rigidbody2D.AddForce(m_currentFlow * Time.deltaTime);
+            }
         }
 
         private void OnEnable()
@@ -77,6 +96,7 @@ namespace lvl_0
             if (m_isFrozen) return;
             Paddle(m_redPaddlePosition, m_redPaddleForce);
             m_redPaddleRenderer.sprite = m_redPaddleStroke;
+            AudioManager.Instance.PlaySfx(m_paddleDownSFX);
         }
 
         private void OnRedPaddleUpPerformed(CallbackContext context)
@@ -84,6 +104,7 @@ namespace lvl_0
             if (m_isFrozen) return;
             Paddle(m_redPaddlePosition, -m_redPaddleForce);
             m_redPaddleRenderer.sprite = m_redPaddleBackstroke;
+            AudioManager.Instance.PlaySfx(m_paddleUpSFX);
         }
 
         private void OnBluePaddleDownPerformed(CallbackContext context)
@@ -91,6 +112,7 @@ namespace lvl_0
             if (m_isFrozen) return;
             Paddle(m_bluePaddlePosition, m_bluePaddleForce);
             m_bluePaddlerRenderer.sprite = m_bluePaddleStroke;
+            AudioManager.Instance.PlaySfx(m_paddleDownSFX);
         }
 
         private void OnBluePaddleUpPerformed(CallbackContext context)
@@ -98,6 +120,7 @@ namespace lvl_0
             if (m_isFrozen) return;
             Paddle(m_bluePaddlePosition, -m_bluePaddleForce);
             m_bluePaddlerRenderer.sprite = m_bluePaddleBackstroke;
+            AudioManager.Instance.PlaySfx(m_paddleUpSFX);
         }
 
         private void OnRedPaddleCanceled(CallbackContext context)
@@ -158,7 +181,41 @@ namespace lvl_0
         {
             if (collision.collider.CompareTag("Rock"))
             {
+                AudioManager.Instance.PlaySfx(m_deathSound);
                 LevelManager.Instance.CanoeKilled();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Water"))
+            {
+                var newFlow = collision.GetComponent<FlowingWater>().GetFlow();
+                m_flowQueue.Add(newFlow);
+                m_currentFlow = newFlow;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Water"))
+            {
+                var exitingFlow = collision.GetComponent<FlowingWater>().GetFlow();
+                var exitingFlowIndex = -1;
+                for(var i = 0; i < m_flowQueue.Count; i++)
+                {
+                    if (m_flowQueue[i] == exitingFlow)
+                    {
+                        exitingFlowIndex = i;
+                        break;
+                    }
+                }
+                
+                if (exitingFlowIndex > -1)
+                {
+                    m_flowQueue.RemoveAt(exitingFlowIndex);
+                }
+                m_currentFlow = m_flowQueue[m_flowQueue.Count - 1];
             }
         }
     }
