@@ -88,14 +88,14 @@ namespace lvl_0
         {
             if (collision.collider.CompareTag("Player"))
             {
-                AudioManager.Instance.PlaySfx(m_rageRoar);
+                AudioManager.Instance.PlayWorldSfx(m_rageRoar);
                 m_animator.SetTrigger("Rage");
             }
         }
 
         public void OnPreyCircleEntered()
         {
-            AudioManager.Instance.PlaySfx(m_findingPreyRoar);
+            AudioManager.Instance.PlayWorldSfx(m_findingPreyRoar);
             m_prey = LevelManager.Instance.GetPlayerTransform();
             m_isChasingPrey = true;
         }
@@ -118,7 +118,7 @@ namespace lvl_0
 
         public void OnActivityCircleEntered()
         {
-            AudioManager.Instance.PlaySfx(m_wakingUpRoar);
+            AudioManager.Instance.PlayWorldSfx(m_wakingUpRoar);
             m_activeEntities++;
             m_hibernating = false;
             m_pulseInterval.Reset();

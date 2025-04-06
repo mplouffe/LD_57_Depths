@@ -550,6 +550,114 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Settings"",
+            ""id"": ""b32c3d85-db9f-4847-a6b6-a51abb963bab"",
+            ""actions"": [
+                {
+                    ""name"": ""MusicUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""0c6902c5-9fa9-4d7c-810c-0d5c8b9291b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MusicDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ae0bec9-640e-4310-ba45-23645ec76916"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SfxUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""ff38346e-7da6-4c10-80e3-676d1a99b1ff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SfxDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""76359fd5-7dbf-438a-85db-b97dc23040a9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitSettings"",
+                    ""type"": ""Button"",
+                    ""id"": ""243ce3f0-68fa-4764-b7b9-9c1549135963"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fcf1f407-e5cf-4b8d-92b8-987c30884455"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MusicUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae7b7ed2-0311-4f29-8922-7214d5e676ad"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MusicDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""576d0a5b-6d43-4e9f-a4eb-f5ccc385fa1e"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SfxUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b4bcf69-c805-4dbb-b4f2-207aa2030079"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SfxDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1754478e-adf5-4c60-ba92-fac92fc7f191"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitSettings"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -572,6 +680,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_PauseMenu_Move = m_PauseMenu.FindAction("Move", throwIfNotFound: true);
         m_PauseMenu_UnPause = m_PauseMenu.FindAction("UnPause", throwIfNotFound: true);
         m_PauseMenu_Confirm = m_PauseMenu.FindAction("Confirm", throwIfNotFound: true);
+        // Settings
+        m_Settings = asset.FindActionMap("Settings", throwIfNotFound: true);
+        m_Settings_MusicUp = m_Settings.FindAction("MusicUp", throwIfNotFound: true);
+        m_Settings_MusicDown = m_Settings.FindAction("MusicDown", throwIfNotFound: true);
+        m_Settings_SfxUp = m_Settings.FindAction("SfxUp", throwIfNotFound: true);
+        m_Settings_SfxDown = m_Settings.FindAction("SfxDown", throwIfNotFound: true);
+        m_Settings_ExitSettings = m_Settings.FindAction("ExitSettings", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -839,6 +954,84 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public PauseMenuActions @PauseMenu => new PauseMenuActions(this);
+
+    // Settings
+    private readonly InputActionMap m_Settings;
+    private List<ISettingsActions> m_SettingsActionsCallbackInterfaces = new List<ISettingsActions>();
+    private readonly InputAction m_Settings_MusicUp;
+    private readonly InputAction m_Settings_MusicDown;
+    private readonly InputAction m_Settings_SfxUp;
+    private readonly InputAction m_Settings_SfxDown;
+    private readonly InputAction m_Settings_ExitSettings;
+    public struct SettingsActions
+    {
+        private @InputActions m_Wrapper;
+        public SettingsActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MusicUp => m_Wrapper.m_Settings_MusicUp;
+        public InputAction @MusicDown => m_Wrapper.m_Settings_MusicDown;
+        public InputAction @SfxUp => m_Wrapper.m_Settings_SfxUp;
+        public InputAction @SfxDown => m_Wrapper.m_Settings_SfxDown;
+        public InputAction @ExitSettings => m_Wrapper.m_Settings_ExitSettings;
+        public InputActionMap Get() { return m_Wrapper.m_Settings; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SettingsActions set) { return set.Get(); }
+        public void AddCallbacks(ISettingsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SettingsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SettingsActionsCallbackInterfaces.Add(instance);
+            @MusicUp.started += instance.OnMusicUp;
+            @MusicUp.performed += instance.OnMusicUp;
+            @MusicUp.canceled += instance.OnMusicUp;
+            @MusicDown.started += instance.OnMusicDown;
+            @MusicDown.performed += instance.OnMusicDown;
+            @MusicDown.canceled += instance.OnMusicDown;
+            @SfxUp.started += instance.OnSfxUp;
+            @SfxUp.performed += instance.OnSfxUp;
+            @SfxUp.canceled += instance.OnSfxUp;
+            @SfxDown.started += instance.OnSfxDown;
+            @SfxDown.performed += instance.OnSfxDown;
+            @SfxDown.canceled += instance.OnSfxDown;
+            @ExitSettings.started += instance.OnExitSettings;
+            @ExitSettings.performed += instance.OnExitSettings;
+            @ExitSettings.canceled += instance.OnExitSettings;
+        }
+
+        private void UnregisterCallbacks(ISettingsActions instance)
+        {
+            @MusicUp.started -= instance.OnMusicUp;
+            @MusicUp.performed -= instance.OnMusicUp;
+            @MusicUp.canceled -= instance.OnMusicUp;
+            @MusicDown.started -= instance.OnMusicDown;
+            @MusicDown.performed -= instance.OnMusicDown;
+            @MusicDown.canceled -= instance.OnMusicDown;
+            @SfxUp.started -= instance.OnSfxUp;
+            @SfxUp.performed -= instance.OnSfxUp;
+            @SfxUp.canceled -= instance.OnSfxUp;
+            @SfxDown.started -= instance.OnSfxDown;
+            @SfxDown.performed -= instance.OnSfxDown;
+            @SfxDown.canceled -= instance.OnSfxDown;
+            @ExitSettings.started -= instance.OnExitSettings;
+            @ExitSettings.performed -= instance.OnExitSettings;
+            @ExitSettings.canceled -= instance.OnExitSettings;
+        }
+
+        public void RemoveCallbacks(ISettingsActions instance)
+        {
+            if (m_Wrapper.m_SettingsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISettingsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SettingsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SettingsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SettingsActions @Settings => new SettingsActions(this);
     public interface IMainMenuActions
     {
         void OnSelect(InputAction.CallbackContext context);
@@ -859,5 +1052,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnUnPause(InputAction.CallbackContext context);
         void OnConfirm(InputAction.CallbackContext context);
+    }
+    public interface ISettingsActions
+    {
+        void OnMusicUp(InputAction.CallbackContext context);
+        void OnMusicDown(InputAction.CallbackContext context);
+        void OnSfxUp(InputAction.CallbackContext context);
+        void OnSfxDown(InputAction.CallbackContext context);
+        void OnExitSettings(InputAction.CallbackContext context);
     }
 }
