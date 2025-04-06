@@ -7,7 +7,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace lvl_0
 {
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : SingletonBase<MenuManager>
     {
         [SerializeField]
         private RectTransform m_pointerArrow;
@@ -26,8 +26,9 @@ namespace lvl_0
 
         private bool m_itemSelected = false;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             m_inputCooldownDuration = new Duration(m_inputCooldown);
             m_inputActions = new InputActions();
             m_selectedMenuItem = MenuItem.Start;
@@ -53,8 +54,7 @@ namespace lvl_0
         {
             if (!m_itemSelected)
             {
-                m_inputCooldownDuration.Update(Time.deltaTime);
-                if (m_inputCooldownDuration.Elapsed())
+                if (m_inputCooldownDuration.UpdateCheck())
                 {
                     var moveInput = m_inputActions.MainMenu.Move.ReadValue<Vector2>();
                     if (moveInput.y < 0 && m_selectedMenuItem < MenuItem.Settings)
@@ -83,7 +83,8 @@ namespace lvl_0
                         LevelAttendant.Instance.LoadGameState(GameState.GameStart);
                         break;
                     case MenuItem.Settings:
-                        LevelAttendant.Instance.LoadGameState(GameState.Settings);
+                        m_inputActions.MainMenu.Disable();
+                        SettingsPopupManager.Instance.ShowSettings();
                         break;
                     //case MenuItem.Quit:
                     //    Application.Quit();
@@ -101,6 +102,12 @@ namespace lvl_0
             }
         }
 
+        public void HideSettingsMenu()
+        {
+            m_inputActions.MainMenu.Enable();
+            m_inputCooldownDuration.Reset();
+            m_itemSelected = false;
+        }
     }
 
     public enum MenuItem

@@ -18,7 +18,16 @@ namespace lvl_0
         private Sprite m_goldMedal;
 
         [SerializeField]
-        private TextMeshProUGUI m_courseCompletedText;
+        private Sprite m_bronzeText;
+
+        [SerializeField]
+        private Sprite m_silverText;
+
+        [SerializeField]
+        private Sprite m_goldText;
+
+        [SerializeField]
+        private Image m_courseCompletedText;
 
         [SerializeField]
         private Image m_medalImage;
@@ -31,15 +40,15 @@ namespace lvl_0
             {
                 case FinishFlagLevel.Easy:
                     m_medalImage.sprite = m_bronzeMedal;
-                    m_courseCompletedText.text = "Bronze Course";
+                    m_courseCompletedText.sprite = m_bronzeText;
                     break;
                 case FinishFlagLevel.Medium:
                     m_medalImage.sprite = m_silverMedal;
-                    m_courseCompletedText.text = "Silver Course";
+                    m_courseCompletedText.sprite = m_silverText;
                     break;
                 case FinishFlagLevel.Hard:
                     m_medalImage.sprite = m_goldMedal;
-                    m_courseCompletedText.text = "Gold Course";
+                    m_courseCompletedText.sprite = m_goldText;
                     break;
             }
         }

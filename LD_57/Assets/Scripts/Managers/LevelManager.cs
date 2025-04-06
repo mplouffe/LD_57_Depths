@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace lvl_0
 {
@@ -35,6 +36,7 @@ namespace lvl_0
                 case LevelManagerState.Respawning:
                     AudioManager.Instance.PlayMusic(m_levelMusic);
                     m_currentPlayer = Instantiate(m_playerPrefab, m_levelStartingPoint);
+                    m_currentPlayer.GetInputActions().Game.Pause.performed += OnGamePaused;
                     CinemachineCameraAccessor.Instance.GetCamera().Follow = m_currentPlayer.transform;
                     break;
                 case LevelManagerState.WaitingAfterDeath:
@@ -53,6 +55,19 @@ namespace lvl_0
             }
 
             m_currentState = newState;
+        }
+
+        private void OnGamePaused(CallbackContext context)
+        {
+            m_currentPlayer.Freeze();
+            m_currentPlayer.GetInputActions().Game.Disable();
+            PauseScreenManager.Instance.ShowPauseScreen();
+        }
+
+        public void UnPauseGame()
+        {
+            m_currentPlayer.UnFreeze();
+            m_currentPlayer.GetInputActions().Game.Enable();
         }
 
         private void Update()
@@ -88,7 +103,7 @@ namespace lvl_0
 
         public void GameSceneLoaded()
         {
-            UIManager.Instance.UpdateLivesCount(m_playerLives);
+            LifeUIWidget.Instance.UpdateLife(m_playerLives);
             SpawnPlayer();
         }
 
@@ -100,11 +115,12 @@ namespace lvl_0
         public void CanoeKilled()
         {
             AudioManager.Instance.StopMusic();
+            m_currentPlayer.GetInputActions().Game.Pause.performed -= OnGamePaused;
             m_currentPlayer.KillCanoe();
             m_playerLives--;
             if (m_playerLives >= 0)
             {
-                UIManager.Instance.UpdateLivesCount(m_playerLives);
+                LifeUIWidget.Instance.UpdateLife(m_playerLives);
             }
             SetState(LevelManagerState.WaitingAfterDeath);
         }

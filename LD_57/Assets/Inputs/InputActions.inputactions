@@ -307,17 +307,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e15f927a-d14a-4b1e-8ef9-f08d494d2e07",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "839ee288-1825-48e3-82fe-2b9ef913a8aa",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -389,15 +378,6 @@
             "id": "ad87b10c-756f-487f-bdf2-f04e66ed8139",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Value",
-                    "id": "c12260df-e345-4777-8b48-baeab58832ac",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "UnPause",
                     "type": "Button",
                     "id": "6581499b-732a-4e75-a482-604836f0eda6",
@@ -407,9 +387,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Confirm",
+                    "name": "ShowSettings",
                     "type": "Button",
-                    "id": "0810350b-9814-4266-9ba6-d948c3a21da2",
+                    "id": "2a985a24-2c81-4102-be35-34fa8aa82216",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Quit",
+                    "type": "Button",
+                    "id": "ab4a6564-dd90-463f-a11f-d97f3375a975",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -417,94 +406,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "4783a6f8-5a3d-49ed-b247-264b4aade54c",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5bc37a3d-0262-4a0f-a694-b4a89050fba6",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Confirm",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "05ead994-96db-4581-b5df-8d2a6c1ba7e6",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "e9a73dc9-7828-44d2-8d4e-32c97760f411",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "4fd08f79-c44b-410d-a183-33bbb2617d09",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "7f5534d7-2bce-447b-95d3-5be9fa3634f9",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "393c7c4a-959c-40ce-b951-f7027b87c75b",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "1ce21dd6-98c8-41c1-8352-b579f58c5477",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "",
                     "id": "75ea90aa-6f92-4a6d-9d31-b28d4d75748e",
@@ -518,12 +419,23 @@
                 },
                 {
                     "name": "",
-                    "id": "5e520b33-b2c9-43e7-b339-82526cb94494",
-                    "path": "<Gamepad>/start",
+                    "id": "4634ca32-930e-4ef1-9836-877752b1669b",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UnPause",
+                    "action": "ShowSettings",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6de6444-676a-4b89-b4c3-fd9da4baff39",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cce29a9eb58307648988f738f98072d1
+guid: a0b3ded7216c4bb4681addde1a4c6ad2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,12 +123,138 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TutorialIcons_0
+      name: PauseScreenText_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dec6dedf99e9cf48b9b64119bbec559
+      internalID: 1426300763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseScreenText_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8ee875018494348a20a3d86fd34678
+      internalID: -1937529628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseScreenText_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aadaba1d0b3c314ea13feca14200af9
+      internalID: 1914102498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseScreenText_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520254ebebe329f42ab08b53950a2eeb
+      internalID: -632757660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseScreenText_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e629e808a41494a96d1a567d5b6290
+      internalID: -1114486919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseScreenText_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bafeaa4005da6a4cb0dfb7731b0262d
+      internalID: 1166416306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseScreenText_6
       rect:
         serializedVersion: 2
         x: 0
         y: 192
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -137,61 +263,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c59ee8a45a9d15498f9cfb098fa9b2e
-      internalID: 1514055793
+      spriteID: 004ac7dbd45aa1942a02c4a0298520c1
+      internalID: -2090834339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TutorialIcons_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecdef88aa361d584fafd4ef789b3c04d
-      internalID: 420609487
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TutorialIcons_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3aed79a755e706f4ab11528e986275fd
-      internalID: 235377433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TutorialIcons_3
+      name: PauseScreenText_7
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -200,61 +284,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86cd55e9869ad93499faa21380e60c1a
-      internalID: 1889227885
+      spriteID: 28e59d02ccafa5d4393fd3005317323b
+      internalID: -647196708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TutorialIcons_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c779bf5653eec6b438e8c99e785e576d
-      internalID: 1224565097
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TutorialIcons_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c6681c8b884eec4887bdb55b5391001
-      internalID: 202003135
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TutorialIcons_6
+      name: PauseScreenText_8
       rect:
         serializedVersion: 2
         x: 0
         y: 64
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -263,61 +305,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e325e083022632d4a8ec44bbe699420d
-      internalID: 408607642
+      spriteID: 4de2dc6e057e6cc4db3d8832b5744036
+      internalID: 1678318142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TutorialIcons_7
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 826cefb90dfa6e8439bd8f3a7b52c5d7
-      internalID: -1689977256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TutorialIcons_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d9dfb4744f38854b85145a9b682beef
-      internalID: -1638251544
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TutorialIcons_9
+      name: PauseScreenText_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 128
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -326,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 757a3bc5f7a1cc5468cbbaeae39cc09d
-      internalID: 1058558500
+      spriteID: 4877862eeb86f4948b60323cd34977cc
+      internalID: -429663793
       vertices: []
       indices: 
       edges: []
@@ -343,16 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      TutorialIcons_0: 1514055793
-      TutorialIcons_1: 420609487
-      TutorialIcons_2: 235377433
-      TutorialIcons_3: 1889227885
-      TutorialIcons_4: 1224565097
-      TutorialIcons_5: 202003135
-      TutorialIcons_6: 408607642
-      TutorialIcons_7: -1689977256
-      TutorialIcons_8: -1638251544
-      TutorialIcons_9: 1058558500
+      PauseScreenText_0: 1426300763
+      PauseScreenText_1: -1937529628
+      PauseScreenText_2: 1914102498
+      PauseScreenText_3: -632757660
+      PauseScreenText_4: -1114486919
+      PauseScreenText_5: 1166416306
+      PauseScreenText_6: -2090834339
+      PauseScreenText_7: -647196708
+      PauseScreenText_8: 1678318142
+      PauseScreenText_9: -429663793
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

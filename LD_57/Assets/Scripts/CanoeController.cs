@@ -116,6 +116,7 @@ namespace lvl_0
             m_inputActions.Game.RedPaddleUp.performed += OnRedPaddleUpPerformed;
             m_inputActions.Game.BluePaddeDown.performed += OnBluePaddleDownPerformed;
             m_inputActions.Game.BluePaddeUp.performed += OnBluePaddleUpPerformed;
+
             
             m_inputActions.Game.RedPaddleDown.canceled += OnRedPaddleCanceled;
             m_inputActions.Game.RedPaddleUp.canceled += OnRedPaddleCanceled;
@@ -215,6 +216,11 @@ namespace lvl_0
             m_frozenAngularVelocity = 0f;
             m_rigidbody2D.simulated = true;
             m_isFrozen = false;
+        }
+
+        public InputActions GetInputActions()
+        {
+            return m_inputActions;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
