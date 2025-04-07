@@ -953,6 +953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EditorGameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 987073669396575282, guid: 3481458ff0ab4d04ea6a15fb2896129d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8950952327472427811, guid: 3481458ff0ab4d04ea6a15fb2896129d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

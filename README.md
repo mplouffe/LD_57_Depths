@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="/Documents/lvl0_logo.png">
+  <img src="/Documents/PromoMaterial/ItchCoverImage.png">
 </p>
 
-# LD 57: 
+# River Woods 
 
-Game made for Ludum Dare 57
+Game made for Ludum Dare 57 Compo.
 
 Made with :blue_heart:
