@@ -56,6 +56,11 @@ namespace lvl_0
         [SerializeField]
         private AudioClip m_deathSound;
 
+        [SerializeField]
+        private float m_forceFactor;
+
+        private Texture2D m_flowMap;
+
         private InputActions m_inputActions;
         private Rigidbody2D m_rigidbody2D;
         private CapsuleCollider2D m_collider;
@@ -64,11 +69,9 @@ namespace lvl_0
         private Vector3 m_frozenVelocity = Vector3.zero;
         private float m_frozenAngularVelocity = 0f;
 
-        private Vector3 m_currentFlow = Vector3.zero;
-        private List<Vector3> m_flowQueue = new(){ Vector3.zero };
-
         private int m_deathAnimationFrame;
         private bool m_isDying;
+
         [SerializeField]
         private List<Sprite> m_deathAnimation;
         [SerializeField]
@@ -81,15 +84,11 @@ namespace lvl_0
             m_inputActions = new InputActions();
             m_rigidbody2D = GetComponent<Rigidbody2D>();
             m_collider = GetComponent<CapsuleCollider2D>();
+            m_flowMap = FlowingWater.Instance.GetFlowMap();
         }
 
         private void Update()
         {
-            if (!m_isFrozen)
-            {
-                m_rigidbody2D.AddForce(m_currentFlow * Time.deltaTime);
-            }
-
             if (m_isDying)
             {
                 if (m_deathAnimationDuration.UpdateCheck())
@@ -106,6 +105,31 @@ namespace lvl_0
                         Destroy(gameObject);
                     }
                 }
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (!m_isFrozen)
+            {
+                Vector2 riverMin = FlowingWater.Instance.FlowMapMin;
+                Vector2 riverMax = FlowingWater.Instance.FlowMapMax;
+
+                Vector2 uv = new(
+                    Mathf.InverseLerp(riverMin.x, riverMax.x, transform.position.x),
+                    Mathf.InverseLerp(riverMin.y, riverMax.y, transform.position.y)
+                );
+
+                Color pixel = m_flowMap.GetPixelBilinear(uv.x, uv.y);
+                Debug.Log("Pixel: " + pixel);
+                Vector2 direction = new Vector2(pixel.r - 0.5f, pixel.g - 0.5f).normalized;
+                float strength = pixel.b;
+                Vector2 targetVelocity = FlowingWater.Instance.FlowStrength * strength * -direction;
+                Vector2 currentVelocity = m_rigidbody2D.velocity;
+                Vector2 flowForce = (targetVelocity - currentVelocity) * m_forceFactor;
+
+                Debug.Log("flowForce: " + flowForce);
+                m_rigidbody2D.AddForce(flowForce);
             }
         }
 
@@ -234,13 +258,7 @@ namespace lvl_0
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Water"))
-            {
-                var newFlow = collision.GetComponent<FlowingWater>().GetFlow();
-                m_flowQueue.Add(newFlow);
-                m_currentFlow = newFlow;
-            }
-            else if (collision.CompareTag("Whirlpool"))
+            if (collision.CompareTag("Whirlpool"))
             {
                 m_parent = transform.parent;
                 transform.parent = collision.gameObject.transform.parent;
@@ -249,26 +267,7 @@ namespace lvl_0
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.CompareTag("Water"))
-            {
-                var exitingFlow = collision.GetComponent<FlowingWater>().GetFlow();
-                var exitingFlowIndex = -1;
-                for(var i = 0; i < m_flowQueue.Count; i++)
-                {
-                    if (m_flowQueue[i] == exitingFlow)
-                    {
-                        exitingFlowIndex = i;
-                        break;
-                    }
-                }
-                
-                if (exitingFlowIndex > -1)
-                {
-                    m_flowQueue.RemoveAt(exitingFlowIndex);
-                }
-                m_currentFlow = m_flowQueue[m_flowQueue.Count - 1];
-            }
-            else if (collision.CompareTag("Whirlpool"))
+            if (collision.CompareTag("Whirlpool"))
             {
                 transform.parent = m_parent;
             }

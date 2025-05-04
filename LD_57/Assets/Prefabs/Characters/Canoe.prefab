@@ -328,6 +328,7 @@ MonoBehaviour:
   m_paddleUpSFX: {fileID: 8300000, guid: fd0455f0d7d752445bf1c390851947e5, type: 3}
   m_paddleDownSFX: {fileID: 8300000, guid: ea1cf37c7dabdaf4d97c279dd898a87a, type: 3}
   m_deathSound: {fileID: 8300000, guid: 00694e0fe0c59e04c83d0e94229f6659, type: 3}
+  m_forceFactor: 0.5
   m_deathAnimation:
   - {fileID: 1764051861, guid: 301d4691c72e5bb42a9c036f0d325667, type: 3}
   - {fileID: -49813713, guid: 301d4691c72e5bb42a9c036f0d325667, type: 3}
